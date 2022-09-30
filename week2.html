@@ -6,23 +6,172 @@
         <title> Week2 Assignment</title>
         
     </head>
-    <body>    
+    <body>   
     <script>
         function calculate(min,max,step){
-            let n=min;
-            let result=0;
-            while(n<=max){
-                result=result+n;
-                n+step;
-            }
-            console.log(result);
-
+        let n=min;
+        let result=0;
+        while(n<=max){
+            result=result+n;
+            n+=step;
+        }
+    
+        console.log(result);
         }
         calculate(1,3,1);
         calculate(4,8,2);
         calculate(-1,2,2);
-     
+
+        function avg(data){
+        const employees=[{"name":"John","salary":30000,"manager":false,},
+        {"name":"Bob",
+        "salary":60000,
+        "manager":true,
+        },
+        {
+        "name":"Jenny",
+        "salary":50000,
+        "manager":false,
+        },
+        {
+        "name":"Tony",
+        "salary":40000,
+        "manager":false,
+        }]
+        const total = Object.values(employees).reduce((acc,curr)=>{
+        if(curr.manager == false) ++acc;
+        return acc;
+        }, 0);
+        
+        function sum(){
+            return employees.reduce(function(sum,employees){
+                if (employees.manager== false) return sum + employees.salary;
+                else return sum ;
+
+            },0);
+        }
+
+        console.log(sum()/total);
+        
+
     
+        
+    }
+        avg({
+        "employees":[
+        {
+        "name":"John",
+        "salary":30000,
+        "manager":false,
+        },
+        {
+        "name":"Bob",
+        "salary":60000,
+        "manager":true,
+        },
+        {
+        "name":"Jenny",
+        "salary":50000,
+        "manager":false,
+        },
+        {
+        "name":"Tony",
+        "salary":40000,
+        "manager":false,
+        }
+        ]
+        });
+
+        function func(a) {
+    
+            let func2 = function (b,c){
+                
+                 console.log(a+(b*c));        
+            };
+        return func2;
+       }
+        func(2)(3,4);
+        func(5)(1,-5);
+        func(-3)(2,9);
+        function maxProduct(nums){ 
+            const arr= Object.values(nums);
+            
+        let posa = Number.MIN_VALUE,
+            posb = Number.MIN_VALUE;
+        let nega = Number.MIN_VALUE,
+            negb = Number.MIN_VALUE;  
+            if(arr.length==2){
+                console.log(arr[0]*arr[1]);
+                return;
+            }
+            for (let x = 0; x < arr.length; x++){
+                if (arr[x] > posa)
+            {
+                posb = posa;
+                posa = arr[x];
+            }else if (arr[x] > posb){
+                posb = arr[x];
+            }if (arr[x] < 0 && Math.abs(arr[x]) >
+                 Math.abs(nega))
+            {
+                negb = nega;
+                nega = arr[x];
+            }
+            else if(arr[x] < 0 && Math.abs(arr[x])
+                       > Math.abs(negb)){
+                negb = arr[x];
+            }
+           }
+        
+
+        if (nega * negb > posa * posb)
+             console.log(nega*negb);
+        else 
+             console.log(posa*posb);
+     
+        }
+        maxProduct([5, 20, 2, 6]);
+        maxProduct([10, -20, 0, 3]);
+        maxProduct([10, -20, 0, -3]);
+        maxProduct([-1, 2]);
+        maxProduct([-1, 0, 2]);
+        maxProduct([5, -1, -2, 0]);
+        maxProduct([-5, -2]);
+
+        
+        function twoSum(nums, target){
+            for (let i = 0; i<nums.length; i++){
+                for(let j = i+1; j< nums.length; j++){
+                    if (nums[i] + nums[j] == target){
+                        return[i,j]
+                    }
+                }
+            }
+        };
+        let result=twoSum([2, 11, 7, 15], 9);
+        console.log(result);  
+
+        function maxZeros(nums){
+            const arr= Object.values(nums);
+            let count=0;
+            let result=0;
+            for(let i=0;i<arr.length;i++){
+                if(arr[i] == 1)
+                    count=0;
+                else{
+                    count++;
+                    result= Math.max(result,count);
+                }
+            }
+            return result;
+            console.log(result);
+        }
+       
+        maxZeros([0, 1, 0, 0]); 
+        maxZeros([1, 0, 0, 0, 0, 1, 0, 1, 0, 0]); 
+        maxZeros([1, 1, 1, 1, 1]);
+        maxZeros([0, 0, 0, 1, 1]);
+
     </script>
     </body>
 </html>
